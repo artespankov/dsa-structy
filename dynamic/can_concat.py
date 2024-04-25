@@ -8,7 +8,6 @@ def _can_concat(s, start, words, memo):
     if start >= len(s):
         return True
 
-    no_way = True
     for w in words:
         if len(w) > (len(s) - start) + 1:
             continue

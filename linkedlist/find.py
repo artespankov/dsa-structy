@@ -29,7 +29,7 @@ def linked_list_find_rec(head, target):
         return False
     if head.val == target:
         return True
-    return head.val == target or linked_list_find_rec(head.nexvt, target)
+    return linked_list_find_rec(head.next, target)
 
 
 if __name__ == "__main__":

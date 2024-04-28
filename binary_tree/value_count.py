@@ -4,10 +4,64 @@ class Node:
     self.left = None
     self.right = None
 
-def tree_value_count(root, target):
-    pass
+
+def tree_value_count_rec(root, target):
+    """
+    Write a function, tree_value_count, that takes in the root of a binary tree and a target value.
+    The function should return the number of times that the target occurs in the tree.
+    n = number of nodes
+    Time: O(n)
+    Space: O(n)
+    """
+    if not root:
+        return 0
+    root_val = 1 if root.val == target else 0
+    return root_val + tree_value_count_rec(root.left, target) + tree_value_count_rec(root.right, target)
+
+def tree_value_count_bfs(root, target):
+    """
+    n - tree nodes number
+    Time: O(n)
+    Space: O(n)
+    """
+    count = 0
+    if not root:
+        return count
+    stack = [root]
+    while stack:
+        node = stack.pop()
+        if node.val == target:
+            count += 1
+        if node.left:
+            stack.append(node.left)
+        if node.right:
+            stack.append(node.right)
+    return count
 
 
+from collections import deque
+
+
+def tree_value_count_dfs(root, target):
+    """
+    n - tree nodes number
+    Time: O(n)
+    Space: O(n)
+    """
+    count = 0
+    if not root:
+        return count
+
+    queue = deque([root])
+    while queue:
+        node = queue.popleft()
+        if node.val == target:
+            count += 1
+        if node.left:
+            queue.append(node.left)
+        if node.right:
+            queue.append(node.right)
+    return count
 
 if __name__ == "__main__":
     a = Node(12)

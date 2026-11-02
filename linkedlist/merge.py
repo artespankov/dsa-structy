@@ -1,7 +1,7 @@
 class Node:
     def __init__(self, val):
         self.val = val
-        self.next = None
+        self.next: Node | None = None
 
 
 def merge_lists(head_1, head_2):
@@ -17,6 +17,7 @@ def merge_lists(head_1, head_2):
     Space: O(1)
 
     """
+    curr = None
     if head_1.val < head_2.val:
         curr = head_1
         head_1 = head_1.next

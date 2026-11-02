@@ -1,7 +1,7 @@
 class Node:
     def __init__(self, val):
         self.val = val
-        self.next = None
+        self.next: Node | None = None
 
 
 def zipper_lists(head_1, head_2):
@@ -9,26 +9,20 @@ def zipper_lists(head_1, head_2):
     Merge lists 1 & 2
     Alternating each list's elements, in place
     """
-    dummy = Node(0)
-    curr = dummy
-    while head_1 and head_2:
-        curr.next = head_1
-        curr = curr.next
-        head_1 = head_1.next
-
-        curr.next = head_2
-        curr = curr.next
-        head_2 = head_2.next
-
-    if head_1:
-        curr.next = head_1
-    else:
-        curr.next = head_2
-
-    return dummy.next
+    if head_1 and not head_2:
+        return head_1
+    if head_2 and not head_1:
+        return head_2
+    first, second = head_1, head_2
+    while first and second:
+        nxt = first.next
+        first.next = second
+        first = first.next
+        second = nxt
+    return head_1
 
 
-def zipper_lists(head_1, head_2):
+def zipper_lists_2(head_1, head_2):
     """
     n = length of list 1
     m = length of list 2
@@ -116,7 +110,6 @@ if __name__ == "__main__":
     zipper_lists(a, x)
     # a -> x -> b -> y -> c -> z -> d -> e -> f
 
-
     w = Node("w")
     # w
 
@@ -129,7 +122,6 @@ if __name__ == "__main__":
 
     zipper_lists(w, one)
     # w -> 1 -> 2 -> 3
-
 
     one = Node(1)
     two = Node(2)

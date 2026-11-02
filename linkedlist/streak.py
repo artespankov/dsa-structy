@@ -1,7 +1,7 @@
 class Node:
     def __init__(self, val):
         self.val = val
-        self.next = None
+        self.next: Node | None = None
 
 
 def longest_streak(head):
@@ -12,22 +12,6 @@ def longest_streak(head):
     Time: O(n)
     Space: O(1)
     """
-    #
-    # max_streak = 0
-    # streak = 0
-    # prev_val = None
-    #
-    # curr = head
-    # while curr:
-    #     if curr.val != prev_val:
-    #         streak = 1
-    #     else:
-    #         streak += 1
-    #
-    #     max_streak = max(max_streak, streak)
-    #     prev_val = curr.val
-    #     curr = curr.next
-    # return max_streak
 
     if not head:
         return 0
@@ -45,8 +29,6 @@ def longest_streak(head):
         max_streak = max(max_streak, streak)
         curr = curr.next
     return max_streak
-
-
 
 
 if __name__ == "__main__":

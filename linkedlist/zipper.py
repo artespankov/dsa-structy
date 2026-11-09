@@ -42,12 +42,7 @@ def zipper_lists_2(head_1, head_2):
             current_1 = current_1.next
         tail = tail.next
         count += 1
-
-    if current_1 is not None:
-        tail.next = current_1
-    if current_2 is not None:
-        tail.next = current_2
-
+    tail.next = current_1 or current_2
     return head_1
 
 
